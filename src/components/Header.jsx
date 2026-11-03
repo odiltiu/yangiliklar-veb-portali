@@ -1,21 +1,21 @@
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { CATEGORIES } from '../lib/news';
 
 export default function Header() {
-    const categories = [
-        'Home', 'Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'
-    ];
-    return (
-        <header className="header-nav">
-            <nav>
-                {categories.map((cat) => (
-                    <NavLink key={cat} 
-                    to={cat === 'Home' ? '/' : `/category/${cat.toLowerCase()}`} 
-                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-                    >
-                        {cat}
-                    </NavLink>
-                ))}
-            </nav>
-        </header>
-    );
+  return (
+    <header className="header-nav">
+      <nav aria-label="Yangiliklar bo'limlari">
+        {CATEGORIES.map((cat) => (
+          <NavLink
+            key={cat.slug || 'home'}
+            to={cat.slug ? `/category/${cat.slug}` : '/'}
+            end
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            {cat.label}
+          </NavLink>
+        ))}
+      </nav>
+    </header>
+  );
 }

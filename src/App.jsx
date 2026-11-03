@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="category/:categoryName" element={<Home />} />
-          <Route path="news/:id" element={<NewsDetail />} />
+          <Route path="news/:category/:index" element={<NewsDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
